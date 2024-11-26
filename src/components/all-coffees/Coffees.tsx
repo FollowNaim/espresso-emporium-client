@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Coffee from "./Coffee";
 
 function Coffees() {
+  const [coffees, setCoffees] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/coffees")
+      .then((res) => res.json())
+      .then((data) => setCoffees(data));
+  }, []);
   return (
     <div className="mt-20 pb-20 bg-homeBG bg-cover bg-no-repeat">
       <div className="max-w-6xl mx-auto px-4 relative">
@@ -16,8 +23,8 @@ function Coffees() {
           </Button>
         </div>
         <div className="grid grid-cols-2 justify-center items-center mx-auto gap-4 mt-8">
-          {[1, 2, 3, 4, 5, 6].map(() => (
-            <Coffee />
+          {coffees?.map((coffee) => (
+            <Coffee coffee={coffee} key={coffee._id} />
           ))}
         </div>
       </div>
