@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
 function Footer() {
   return (
     <>
-      <div className="bg-footerBg text-black mt-10 pt-20 pb-8 px-4">
+      <div className="bg-footerBg text-black mt-10 pt-20 pb-8 px-8">
         <div className="container mx-auto grid grid-cols-2 items-center">
           <div>
             <div className="flex flex-col gap-4">

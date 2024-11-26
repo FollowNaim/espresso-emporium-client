@@ -13,6 +13,7 @@ module.exports = {
         heroBg: 'url("./src/assets/more/hero.png")',
         footerBg: 'url("./src/assets/more/footerBg.jpg")',
         lastFooter: 'url("./src/assets/more/last-footer.jpg")',
+        newCoffeeBg: 'url("./src/assets/more/new-coffee-bg.png")',
       },
       borderRadius: {
         lg: "var(--radius)",
