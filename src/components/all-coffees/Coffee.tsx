@@ -10,15 +10,15 @@ function Coffee() {
       </CardHeader>
       <CardContent className="pt-6 space-y-1">
         <p>
-          <span className="font-medium ">Name :</span>{" "}
+          <span className="font-semibold ">Name :</span>{" "}
           <span className=" ml-1 text-black/80">Americano Coffee</span>
         </p>
         <p>
-          <span className="font-medium ">Chef : </span>
+          <span className="font-semibold ">Chef : </span>
           <span className=" ml-1 text-black/80">Mr. Matin Paul</span>
         </p>
         <p>
-          <span className="font-medium ">Price :</span>
+          <span className="font-semibold ">Price :</span>
           <span className=" ml-1 text-black/80"> 890 Taka</span>
         </p>
       </CardContent>

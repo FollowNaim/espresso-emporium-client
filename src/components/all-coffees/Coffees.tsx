@@ -3,7 +3,7 @@ import Coffee from "./Coffee";
 
 function Coffees() {
   return (
-    <div className="my-20">
+    <div className="mt-20 pb-20 bg-homeBG bg-cover bg-no-repeat">
       <div className="max-w-6xl mx-auto px-4 relative">
         <div className="flex flex-col justify-center items-center text-center">
           <p className="">--- Sip & Savor ---</p>

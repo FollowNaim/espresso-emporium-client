@@ -14,6 +14,7 @@ module.exports = {
         footerBg: 'url("./src/assets/more/footerBg.jpg")',
         lastFooter: 'url("./src/assets/more/last-footer.jpg")',
         newCoffeeBg: 'url("./src/assets/more/new-coffee-bg.png")',
+        homeBG: 'url("./src/assets/more/home-bg.png")',
       },
       borderRadius: {
         lg: "var(--radius)",

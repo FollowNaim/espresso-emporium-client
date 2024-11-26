@@ -116,7 +116,7 @@ function AddNewCoffee() {
               />
             </div>
             <Button type="submit" className="w-full">
-              Login
+              Add New Coffee
             </Button>
           </div>
         </CardContent>
