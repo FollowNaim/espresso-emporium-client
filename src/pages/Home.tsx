@@ -3,6 +3,7 @@ import secondIcon from "../assets/icons/2.png";
 import thirdIcon from "../assets/icons/3.png";
 import fourthIcon from "../assets/icons/4.png";
 import Coffees from "../components/all-coffees/Coffees";
+import FollowUs from "../components/follow-us/FollowUs";
 import Hero from "../components/hero/Hero";
 
 function Home() {
@@ -10,8 +11,8 @@ function Home() {
     <div>
       <div className="container mx-auto">
         <Hero />
-        <div className="bg-card ">
-          <div className="py-6 grid grid-cols-4 justify-center items-center gap-10 px-4 w-11/12 mx-auto pl-10    ">
+        <div className=" mx-auto bg-card ">
+          <div className="py-6 grid grid-cols-4 justify-center items-center gap-10 px-4 max-w-6xl mx-auto pl-10    ">
             <div className="space-y-2">
               <img className="w-12" src={firstIcon} alt="" />
               <h3 className="font-Rancho text-2xl font-semibold">
@@ -52,6 +53,7 @@ function Home() {
           </div>
         </div>
         <Coffees />
+        <FollowUs />
       </div>
     </div>
   );

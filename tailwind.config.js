@@ -11,6 +11,8 @@ module.exports = {
       backgroundImage: {
         nav: 'url("./src/assets/more/nav.jpg")',
         heroBg: 'url("./src/assets/more/hero.png")',
+        footerBg: 'url("./src/assets/more/footerBg.jpg")',
+        lastFooter: 'url("./src/assets/more/last-footer.jpg")',
       },
       borderRadius: {
         lg: "var(--radius)",

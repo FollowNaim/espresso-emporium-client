@@ -4,7 +4,7 @@ import { Eye, Pencil, Trash } from "lucide-react";
 
 function Coffee() {
   return (
-    <Card className="flex bg-card/50 shadow-none border-none items-center text-black">
+    <Card className="flex justify-between bg-card/50 shadow-none border-none items-center text-black">
       <CardHeader>
         <img className="w-16" src={coffe1} alt="" />
       </CardHeader>
