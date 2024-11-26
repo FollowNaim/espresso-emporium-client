@@ -24,7 +24,12 @@ function Coffees() {
         </div>
         <div className="grid grid-cols-2 justify-center items-center mx-auto gap-4 mt-8">
           {coffees?.map((coffee) => (
-            <Coffee coffee={coffee} key={coffee._id} />
+            <Coffee
+              coffees={coffees}
+              setCoffees={setCoffees}
+              coffee={coffee}
+              key={coffee._id}
+            />
           ))}
         </div>
       </div>

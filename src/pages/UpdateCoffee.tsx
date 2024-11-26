@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -12,6 +12,38 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 
 function UpdateCoffee() {
+  const coffee = useLoaderData();
+  const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+    const coffee = {
+      _id,
+      name,
+      chef,
+      supplier,
+      taste,
+      category,
+      details,
+      photo,
+    };
+    fetch(`http://localhost:5000/coffees/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(coffee),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div>
       <div className="pt-10 bg-newCoffeeBg bg-cover bg-no-repeat">
@@ -33,93 +65,102 @@ function UpdateCoffee() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 w-full">
-                <div className="space-y-2 w-full">
-                  <Label htmlFor="name">Name</Label>
+            <form onSubmit={handleSubmit}>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 w-full">
+                  <div className="space-y-2 w-full">
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                      className="bg-white"
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Enter Coffee Name"
+                      required
+                      defaultValue={name}
+                    />
+                  </div>
+                  <div className="space-y-2 w-full">
+                    <Label htmlFor="chef">Chef</Label>
+                    <Input
+                      className="bg-white"
+                      name="chef"
+                      id="chef"
+                      type="text"
+                      placeholder="Enter coffee chef"
+                      required
+                      defaultValue={chef}
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 w-full">
+                  <div className="space-y-2 w-full">
+                    <Label htmlFor="Supplier">Supplier</Label>
+                    <Input
+                      className="bg-white"
+                      id="Supplier"
+                      name="supplier"
+                      type="text"
+                      placeholder="Enter coffee supplier"
+                      required
+                      defaultValue={supplier}
+                    />
+                  </div>
+                  <div className="space-y-2 w-full">
+                    <Label htmlFor="taste">Taste</Label>
+                    <Input
+                      className="bg-white"
+                      name="taste"
+                      id="taste"
+                      type="text"
+                      placeholder="Enter coffee taste"
+                      required
+                      defaultValue={taste}
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 w-full">
+                  <div className="space-y-2 w-full">
+                    <Label htmlFor="Category">Category</Label>
+                    <Input
+                      className="bg-white"
+                      id="Category"
+                      name="category"
+                      type="text"
+                      placeholder="Enter coffee category"
+                      required
+                      defaultValue={category}
+                    />
+                  </div>
+                  <div className="space-y-2 w-full">
+                    <Label htmlFor="details">Details</Label>
+                    <Input
+                      className="bg-white"
+                      name="details"
+                      id="details"
+                      type="text"
+                      placeholder="Enter coffee details"
+                      required
+                      defaultValue={details}
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="photo">Photo</Label>
                   <Input
                     className="bg-white"
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Enter Coffee Name"
+                    id="photo"
+                    placeholder="Enter photo URL"
+                    type="url"
                     required
+                    defaultValue={photo}
                   />
                 </div>
-                <div className="space-y-2 w-full">
-                  <Label htmlFor="chef">Chef</Label>
-                  <Input
-                    className="bg-white"
-                    name="chef"
-                    id="chef"
-                    type="text"
-                    placeholder="Enter coffee chef"
-                    required
-                  />
-                </div>
+                <Button type="submit" className="w-full">
+                  Update Coffee
+                </Button>
               </div>
-              <div className="flex items-center gap-4 w-full">
-                <div className="space-y-2 w-full">
-                  <Label htmlFor="Supplier">Supplier</Label>
-                  <Input
-                    className="bg-white"
-                    id="Supplier"
-                    name="supplier"
-                    type="text"
-                    placeholder="Enter coffee supplier"
-                    required
-                  />
-                </div>
-                <div className="space-y-2 w-full">
-                  <Label htmlFor="taste">Taste</Label>
-                  <Input
-                    className="bg-white"
-                    name="taste"
-                    id="taste"
-                    type="text"
-                    placeholder="Enter coffee taste"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="flex items-center gap-4 w-full">
-                <div className="space-y-2 w-full">
-                  <Label htmlFor="Category">Category</Label>
-                  <Input
-                    className="bg-white"
-                    id="Category"
-                    name="category"
-                    type="text"
-                    placeholder="Enter coffee category"
-                    required
-                  />
-                </div>
-                <div className="space-y-2 w-full">
-                  <Label htmlFor="details">Details</Label>
-                  <Input
-                    className="bg-white"
-                    name="details"
-                    id="details"
-                    type="text"
-                    placeholder="Enter coffee details"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="photo">Photo</Label>
-                <Input
-                  className="bg-white"
-                  id="photo"
-                  placeholder="Enter photo URL"
-                  type="url"
-                  required
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                Update Coffee
-              </Button>
-            </div>
+            </form>
           </CardContent>
         </Card>
       </div>

@@ -2,8 +2,17 @@ import { Eye, Pencil, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader } from "../ui/card";
 
-function Coffee({ coffee }: { coffee: object }) {
+function Coffee({ coffee, coffees, setCoffees }: { coffee: object }) {
   const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/coffees/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCoffees(coffees.filter((c) => c._id !== id));
+      });
+  };
   return (
     <Card className="flex justify-between bg-card/50 shadow-none border-none items-center text-black">
       <CardHeader>
@@ -27,8 +36,15 @@ function Coffee({ coffee }: { coffee: object }) {
         <Link to={`/coffees/${_id}`}>
           <Eye size={30} className="bg-accent text-white p-2 rounded-md" />
         </Link>
-        <Pencil size={30} className="bg-gray-800 text-white p-2 rounded-md" />
-        <Trash size={30} className="bg-red-600 text-white p-2 rounded-md" />
+        <Link to={`/update-coffee/${_id}`}>
+          <Pencil size={30} className="bg-gray-800 text-white p-2 rounded-md" />
+        </Link>
+
+        <Trash
+          size={30}
+          className="bg-red-600 cursor-pointer text-white p-2 rounded-md"
+          onClick={() => handleDelete(_id)}
+        />
       </CardContent>
     </Card>
   );
