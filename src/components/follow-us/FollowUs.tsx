@@ -17,7 +17,7 @@ function FollowUs() {
             Follow on Instagram
           </h3>
         </div>
-        <div className="grid grid-cols-4 gap-4 *:h-52 *:w-full *:object-cover *:rounded-md mt-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 *:h-52 *:w-full *:object-cover *:rounded-md mt-8">
           <img src={cup1} alt="" />
           <img src={cup2} alt="" />
           <img src={cup3} alt="" />

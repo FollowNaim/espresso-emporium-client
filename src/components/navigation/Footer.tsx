@@ -8,14 +8,14 @@ import {
   Youtube,
 } from "lucide-react";
 import navLogo from "../../assets/more/nav-footer.png";
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
 function Footer() {
   return (
     <>
       <div className="bg-footerBg text-black mt-10 pt-20 pb-8 px-8">
-        <div className="container mx-auto grid grid-cols-2 items-center">
+        <div className="container mx-auto grid md:grid-cols-2 items-center">
           <div>
             <div className="flex flex-col gap-4">
               <img className="w-16" src={navLogo} alt="" />
@@ -27,10 +27,18 @@ function Footer() {
                 your memorable moments, to share with your best companion.
               </p>
               <div className="flex items-center gap-4">
-                <Facebook />
-                <Github />
-                <Twitter />
-                <Youtube />
+                <a className="hover:text-blue-600" href="https://facebook.com">
+                  <Facebook />
+                </a>
+                <a className="hover:text-blue-600" href="https://github.com">
+                  <Github />
+                </a>
+                <a className="hover:text-blue-600" href="https://x.com">
+                  <Twitter />
+                </a>
+                <a className="hover:text-blue-600" href="https://youtube.com">
+                  <Youtube />
+                </a>
               </div>
             </div>
             <div className="mt-6 flex flex-col gap-3">
@@ -51,8 +59,8 @@ function Footer() {
               </p>
             </div>
           </div>
-          <div className=" ">
-            <div className="w-[400px] ml-20 flex items-start flex-col gap-3">
+          <div className="mt-10 ">
+            <div className="w-full md:w-[400px] md:ml-20 flex items-start flex-col gap-3">
               <h3 className="text-3xl font-semibold font-Rancho">
                 Connect with Us
               </h3>

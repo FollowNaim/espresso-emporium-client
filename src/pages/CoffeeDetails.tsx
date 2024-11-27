@@ -7,7 +7,7 @@ function CoffeeDetails() {
   const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
   return (
     <div className=" bg-newCoffeeBg bg-cover bg-no-repeat">
-      <div className="max-w-3xl mx-auto pt-10">
+      <div className="max-w-3xl px-4 mx-auto pt-10">
         <Link className="" to={"/"}>
           <h2 className="flex items-center gap-3 font-Rancho text-2xl">
             <ArrowLeft /> Back To Home

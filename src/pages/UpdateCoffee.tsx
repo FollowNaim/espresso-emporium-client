@@ -1,5 +1,6 @@
 import { ArrowLeft } from "lucide-react";
-import { Link, useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -13,6 +14,7 @@ import { Label } from "../components/ui/label";
 
 function UpdateCoffee() {
   const coffee = useLoaderData();
+  const navigate = useNavigate();
   const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,22 +36,31 @@ function UpdateCoffee() {
       details,
       photo,
     };
-    fetch(`http://localhost:5000/coffees/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(coffee),
-    })
+    toast
+      .promise(
+        fetch(`http://localhost:5000/coffees/${_id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(coffee),
+        }),
+        {
+          loading: "Updating...",
+          success: <b>Coffee updated!</b>,
+          error: <b>Could not update.</b>,
+        }
+      )
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then(() => navigate("/"))
+      .catch((err) => console.log(err));
   };
   return (
     <div>
-      <div className="pt-10 bg-newCoffeeBg bg-cover bg-no-repeat">
-        <div className="mx-auto max-w-2xl pb-4">
+      <div className="pt-10 px-4 bg-newCoffeeBg bg-cover bg-no-repeat">
+        <div className="mx-auto max-w-2xl hover:text-red-600 pb-4">
           <Link to={"/"}>
-            <h2 className="flex items-center gap-3 font-Rancho text-2xl">
+            <h2 className="flex  items-center gap-3 font-Rancho text-2xl">
               <ArrowLeft /> Back To Home
             </h2>
           </Link>

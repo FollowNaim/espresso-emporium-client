@@ -12,7 +12,7 @@ function Home() {
       <div className="container mx-auto">
         <Hero />
         <div className=" mx-auto bg-card ">
-          <div className="py-6 grid grid-cols-4 justify-center items-center gap-10 px-4 max-w-6xl mx-auto pl-10    ">
+          <div className="py-6 grid grid-cols-2 lg:grid-cols-4 justify-center items-center gap-10 px-4 max-w-6xl mx-auto pl-10    ">
             <div className="space-y-2">
               <img className="w-12" src={firstIcon} alt="" />
               <h3 className="font-Rancho text-2xl font-semibold">

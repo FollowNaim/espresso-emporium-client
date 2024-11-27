@@ -1,5 +1,6 @@
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -12,6 +13,7 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 
 function AddNewCoffee() {
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,19 +25,28 @@ function AddNewCoffee() {
     const details = form.details.value;
     const photo = form.photo.value;
     const coffee = { name, chef, supplier, taste, category, details, photo };
-    fetch("http://localhost:5000/coffees", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(coffee),
-    })
+    toast
+      .promise(
+        fetch("http://localhost:5000/coffees", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(coffee),
+        }),
+        {
+          loading: "Adding New Coffee...",
+          success: <b>Coffee Added!</b>,
+          error: <b>Could not add.</b>,
+        }
+      )
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then(() => navigate("/"))
+      .catch((err) => console.log(err));
   };
   return (
-    <div className="pt-10 bg-newCoffeeBg bg-cover bg-no-repeat">
-      <div className="mx-auto max-w-2xl pb-4">
+    <div className="pt-10 px-4 bg-newCoffeeBg bg-cover bg-no-repeat">
+      <div className="mx-auto max-w-2xl pb-4 hover:text-red-600">
         <Link to={"/"}>
           <h2 className="flex items-center gap-3 font-Rancho text-2xl">
             <ArrowLeft /> Back To Home
