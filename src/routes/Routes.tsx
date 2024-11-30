@@ -22,13 +22,13 @@ export const routes = createBrowserRouter([
         path: "/coffees/:id",
         element: <CoffeeDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+          fetch(`https://server-coffees.vercel.app/coffees/${params.id}`),
       },
       {
         path: "/update-coffee/:id",
         element: <UpdateCoffee />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+          fetch(`https://server-coffees.vercel.app/coffees/${params.id}`),
       },
     ],
   },

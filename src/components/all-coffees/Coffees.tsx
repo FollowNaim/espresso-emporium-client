@@ -2,11 +2,20 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import Coffee from "./Coffee";
-
+interface Coffee {
+  _id: string;
+  name: string;
+  chef: string;
+  supplier: string;
+  taste: string;
+  category: string;
+  details: string;
+  photo: string;
+}
 function Coffees() {
-  const [coffees, setCoffees] = useState([]);
+  const [coffees, setCoffees] = useState<Coffee[]>([]);
   useEffect(() => {
-    fetch("http://localhost:5000/coffees")
+    fetch("https://server-coffees.vercel.app/coffees")
       .then((res) => res.json())
       .then((data) => setCoffees(data));
   }, []);

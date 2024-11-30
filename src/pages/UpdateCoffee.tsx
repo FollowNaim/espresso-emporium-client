@@ -16,16 +16,21 @@ function UpdateCoffee() {
   const coffee = useLoaderData();
   const navigate = useNavigate();
   const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const chef = form.chef.value;
-    const supplier = form.supplier.value;
-    const taste = form.taste.value;
-    const category = form.category.value;
-    const details = form.details.value;
-    const photo = form.photo.value;
+    const form = e.target as HTMLFormElement;
+
+    // Access form elements by their name attributes
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const chef = (form.elements.namedItem("chef") as HTMLInputElement).value;
+    const supplier = (form.elements.namedItem("supplier") as HTMLInputElement)
+      .value;
+    const taste = (form.elements.namedItem("taste") as HTMLInputElement).value;
+    const category = (form.elements.namedItem("category") as HTMLInputElement)
+      .value;
+    const details = (form.elements.namedItem("details") as HTMLInputElement)
+      .value;
+    const photo = (form.elements.namedItem("photo") as HTMLInputElement).value;
     const coffee = {
       _id,
       name,
@@ -38,7 +43,7 @@ function UpdateCoffee() {
     };
     toast
       .promise(
-        fetch(`http://localhost:5000/coffees/${_id}`, {
+        fetch(`https://server-coffees.vercel.app/coffees/${_id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",

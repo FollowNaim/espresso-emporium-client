@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "../components/ui/card";
 
 function CoffeeDetails() {
   const coffee = useLoaderData();
-  const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
+  const { name, chef, supplier, taste, category, details, photo } = coffee;
   return (
     <div className=" bg-newCoffeeBg bg-cover bg-no-repeat">
       <div className="max-w-3xl px-4 mx-auto pt-10">
@@ -13,9 +13,13 @@ function CoffeeDetails() {
             <ArrowLeft /> Back To Home
           </h2>
         </Link>
-        <Card className="flex items-center mt-5">
-          <CardHeader>
-            <img className="w-62" src={photo} alt="" />
+        <Card className="flex items-center mt-5 h-full w-full">
+          <CardHeader className="h-full">
+            <img
+              className="w-44 rounded-md h-full object-cover"
+              src={photo}
+              alt=""
+            />
           </CardHeader>
           <CardContent className="pt-6 space-y-1">
             <h3 className="text-3xl font-Rancho font-semibold mb-4">

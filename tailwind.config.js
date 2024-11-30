@@ -9,12 +9,12 @@ module.exports = {
         Raleway: "Raleway",
       },
       backgroundImage: {
-        nav: 'url("./src/assets/more/nav.jpg")',
-        heroBg: 'url("./src/assets/more/hero.png")',
-        footerBg: 'url("./src/assets/more/footerBg.jpg")',
-        lastFooter: 'url("./src/assets/more/last-footer.jpg")',
-        newCoffeeBg: 'url("./src/assets/more/new-coffee-bg.png")',
-        homeBG: 'url("./src/assets/more/home-bg.png")',
+        nav: 'url("./assets/more/nav.jpg")',
+        heroBg: 'url("./assets/more/hero.png")',
+        footerBg: 'url("./assets/more/footerBg.jpg")',
+        lastFooter: 'url("./assets/more/last-footer.jpg")',
+        newCoffeeBg: 'url("./assets/more/new-coffee-bg.png")',
+        homeBG: 'url("./assets/more/home-bg.png")',
       },
       borderRadius: {
         lg: "var(--radius)",
